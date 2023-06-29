@@ -1,3 +1,5 @@
+[![CodeQL](https://github.com/scssyworks/argon-calendar-core/actions/workflows/codeql.yml/badge.svg)](https://github.com/scssyworks/argon-calendar-core/actions/workflows/codeql.yml)
+
 # Argon Calendar Core
 
 "Argon Calendar Core" is a core API for calendar
