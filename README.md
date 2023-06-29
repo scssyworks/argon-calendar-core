@@ -2,6 +2,12 @@
 
 "Argon Calendar Core" is a core API for calendar
 
+# Install
+
+```sh
+npm i argon-calendar-core
+```
+
 # Usage
 
 Create a calendar using default `calendar` object or customize using `Calendar`
@@ -103,6 +109,11 @@ console.log(
   calendar.create(-2).output(),
 ); // Outputs month of April
 ```
+
+# Support
+
+Calendar core API is supported in `nodejs` and can also be used with bundlers
+like `webpack`, `parcel` and `rollup`.
 
 # Contributing
 
