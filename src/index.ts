@@ -8,7 +8,7 @@ export class Calendar {
   #calendarConfig: CalendarConfig;
   #renderedMonths: RenderedMonths = [];
 
-  constructor(config: CalendarConfig = {}) {
+  constructor(config: Partial<CalendarConfig> = {}) {
     this.#calendarConfig = Object.freeze(
       Object.assign(
         {
@@ -46,8 +46,7 @@ export class Calendar {
   }
 
   create(offset = 0) {
-    const { visibleMonthCount = 1, visibleWeekCount = 6 } =
-      this.#calendarConfig;
+    const { visibleMonthCount, visibleWeekCount } = this.#calendarConfig;
     const currentDate = this.today();
     const monthToRender = currentDate.getMonth() + offset;
     if (this.#renderedMonths.length) {
