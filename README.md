@@ -85,22 +85,23 @@ console.log(
 ### Render previous or next month(s) by passing an offset
 
 ```ts
+// Assuming current month is June 2023
 // ...
 console.log(
   calendar.create(+1).output(),
-); // Outputs next month. E.g. If current month is June, then the output is month of July
+); // Outputs month of July
 
 console.log(
   calendar.create(+2).output(),
-); // Outputs 2nd month from next months. E.g. If current month is June, then the output is month of August
+); // Outputs month of August
 
 console.log(
   calendar.create(-1).output(),
-); // Outputs previous month. E.g. If current month is June, then the output is month of May
+); // Outputs month of May
 
 console.log(
   calendar.create(-2).output(),
-); // Outputs 2nd month from previous months. E.g. If current month is June, then the output is month of April
+); // Outputs month of April
 ```
 
 # Contributing
