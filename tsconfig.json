@@ -29,6 +29,9 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true
-  }
+    "skipLibCheck": true,
+  },
+  "include": [
+    "src/**/*"
+  ]
 }
