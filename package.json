@@ -1,6 +1,6 @@
 {
   "name": "argon-calendar-core",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Argon calendar core provides set of APIs to build your own calendar",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
