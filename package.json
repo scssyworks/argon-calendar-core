@@ -1,0 +1,28 @@
+{
+  "name": "argon-calendar-core",
+  "version": "0.0.1",
+  "description": "Argon calendar core provides set of APIs to build your own calendar",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "typings": "dist/typings/index.d.ts",
+  "scripts": {
+    "typings": "tsc",
+    "build": "npm run typings && rollup-scripts build",
+    "lint": "rollup-scripts lint"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/scssyworks/argon-calendar-core.git"
+  },
+  "keywords": ["calendar", "core", "api"],
+  "author": "scssyworks",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/scssyworks/argon-calendar-core/issues"
+  },
+  "homepage": "https://github.com/scssyworks/argon-calendar-core#readme",
+  "devDependencies": {
+    "rollup-scripts": "0.0.94",
+    "rome": "^12.1.3"
+  }
+}
