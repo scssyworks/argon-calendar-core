@@ -14,7 +14,7 @@ export function generateMonth(
   let totalDays = totalWeeks * 7; // 7 days in a week
   let dayOffset = renderDay - weekStartsOn;
   if (dayOffset < 0) {
-    dayOffset = 7 - Math.abs(dayOffset);
+    dayOffset = 7 + dayOffset;
   }
   let renderDate = cal.getDate() - dayOffset;
   while (totalDays !== 0) {

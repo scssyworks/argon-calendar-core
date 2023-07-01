@@ -34,7 +34,8 @@ export class Calendar {
       return currentDay;
     }
     const millisecondsOffset = offset * 24 * 60 * 60 * 1000;
-    return new Date(currentDay.getTime() + millisecondsOffset);
+    currentDay.setTime(currentDay.getTime() + millisecondsOffset);
+    return currentDay;
   }
 
   today() {
@@ -49,9 +50,7 @@ export class Calendar {
     const { visibleMonthCount, visibleWeekCount } = this.#calendarConfig;
     const currentDate = this.today();
     const monthToRender = currentDate.getMonth() + offset;
-    if (this.#renderedMonths.length) {
-      this.#renderedMonths.length = 0;
-    }
+    this.reset();
     for (let i = 0; i < visibleMonthCount; i += 1) {
       this.#renderedMonths.push(
         generateMonth(
@@ -81,6 +80,10 @@ export class Calendar {
       return transformedMonths;
     }
     return this.#renderedMonths;
+  }
+
+  reset() {
+    this.#renderedMonths.length = 0;
   }
 }
 

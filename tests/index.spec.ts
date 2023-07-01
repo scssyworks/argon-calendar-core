@@ -10,7 +10,7 @@ describe('calendar instance', () => {
     dt = new Date(today.getFullYear(), today.getMonth());
     dayOffset = dt.getDay() - WEEKS.findIndex((wk) => wk === Week.SUN);
     if (dayOffset < 0) {
-      dayOffset = 7 - Math.abs(dayOffset);
+      dayOffset = 7 + dayOffset;
     }
     calendarStart = new Date(
       dt.getFullYear(),
