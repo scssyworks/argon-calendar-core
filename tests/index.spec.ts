@@ -128,4 +128,8 @@ describe('Calendar class', () => {
     expect(calendarOutput[0].weekLabels.length).toBe(7);
     expect(WEEKS[calendarOutput[0].dates[0].getDay()]).toBe(Week.FRI);
   });
+  test('should validate input date as todays date', () => {
+    expect(calendar.isToday(today)).toBeTruthy();
+    expect(calendar.isToday(new Date(2022, 10))).toBeFalsy();
+  });
 });

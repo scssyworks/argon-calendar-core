@@ -15,7 +15,6 @@ export class Calendar {
       visibleWeekCount: visibleWeekCount ?? 6,
       weekStartsOn: weekStartsOn ?? Week.SUN
     });
-    console.log(this.#calendarConfig);
     this.#weekStartIndex = WEEKS.findIndex(
       (week) => this.#calendarConfig.weekStartsOn === week
     );
@@ -37,6 +36,15 @@ export class Calendar {
 
   today() {
     return this.getDate();
+  }
+
+  isToday(compareDate: Date) {
+    const dt = this.today();
+    return (
+      dt.getFullYear() === compareDate.getFullYear() &&
+      dt.getMonth() === compareDate.getMonth() &&
+      dt.getDate() === compareDate.getDate()
+    );
   }
 
   output() {
