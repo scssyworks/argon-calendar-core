@@ -87,6 +87,32 @@ describe('Calendar class', () => {
   test('should create new instance of calendar', () => {
     expect(new Calendar()).toBeInstanceOf(Calendar);
   });
+  test('should render correctly if config is not set', () => {
+    const calendar = new Calendar();
+    const calendarOutput = calendar.create().output();
+    expect(calendarOutput.length).toBe(1);
+    expect(calendarOutput[0].month).toBe(MONTHS[dt.getMonth()]);
+    expect(calendarOutput[0].year).toBe(dt.getFullYear().toString());
+    expect(calendarOutput[0].dates.length).toBe(6 * 7); // 6 weeks x 7 days
+    expect(calendarOutput[0].weekLabels[0]).toBe(Week.SUN);
+    expect(calendarOutput[0].weekLabels.length).toBe(7);
+    expect(WEEKS[calendarOutput[0].dates[0].getDay()]).toBe(Week.SUN);
+  });
+  test('should render correctly if config is incorrectly not set', () => {
+    const calendar = new Calendar({
+      visibleMonthCount: undefined,
+      visibleWeekCount: undefined,
+      weekStartsOn: undefined
+    });
+    const calendarOutput = calendar.create().output();
+    expect(calendarOutput.length).toBe(1);
+    expect(calendarOutput[0].month).toBe(MONTHS[dt.getMonth()]);
+    expect(calendarOutput[0].year).toBe(dt.getFullYear().toString());
+    expect(calendarOutput[0].dates.length).toBe(6 * 7); // 6 weeks x 7 days
+    expect(calendarOutput[0].weekLabels[0]).toBe(Week.SUN);
+    expect(calendarOutput[0].weekLabels.length).toBe(7);
+    expect(WEEKS[calendarOutput[0].dates[0].getDay()]).toBe(Week.SUN);
+  });
   test('should create new instance of calendar with updated config', () => {
     const calendar = new Calendar({
       visibleMonthCount: 2,

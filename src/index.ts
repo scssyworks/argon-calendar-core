@@ -9,16 +9,13 @@ export class Calendar {
   #renderedMonths: RenderedMonths = [];
 
   constructor(config: Partial<CalendarConfig> = {}) {
-    this.#calendarConfig = Object.freeze(
-      Object.assign(
-        {
-          visibleMonthCount: 1,
-          visibleWeekCount: 6,
-          weekStartsOn: Week.SUN
-        } as CalendarConfig,
-        config
-      )
-    );
+    const { visibleMonthCount, visibleWeekCount, weekStartsOn } = config;
+    this.#calendarConfig = Object.freeze({
+      visibleMonthCount: visibleMonthCount ?? 1,
+      visibleWeekCount: visibleWeekCount ?? 6,
+      weekStartsOn: weekStartsOn ?? Week.SUN
+    });
+    console.log(this.#calendarConfig);
     this.#weekStartIndex = WEEKS.findIndex(
       (week) => this.#calendarConfig.weekStartsOn === week
     );
