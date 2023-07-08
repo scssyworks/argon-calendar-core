@@ -6,7 +6,7 @@ describe('calendar instance', () => {
   let dayOffset: number;
   let calendarStart: Date;
   beforeEach(() => {
-    today = calendar.today();
+    today = Calendar.today();
     dt = new Date(today.getFullYear(), today.getMonth());
     dayOffset = dt.getDay() - WEEKS.findIndex((wk) => wk === Week.SUN);
     if (dayOffset < 0) {
@@ -67,7 +67,7 @@ describe('calendar instance', () => {
     expect(today.getDate()).toBe(new Date().getDate());
   });
   test('should get offset date', () => {
-    expect(calendar.getDate(+1).getDate()).toBe(
+    expect(Calendar.getDate(+1).getDate()).toBe(
       new Date(
         today.getFullYear(),
         today.getMonth(),
@@ -81,7 +81,7 @@ describe('Calendar class', () => {
   let today: Date;
   let dt: Date;
   beforeEach(() => {
-    today = calendar.today();
+    today = Calendar.today();
     dt = new Date(today.getFullYear(), today.getMonth());
   });
   test('should create new instance of calendar', () => {
@@ -129,7 +129,15 @@ describe('Calendar class', () => {
     expect(WEEKS[calendarOutput[0].dates[0].getDay()]).toBe(Week.FRI);
   });
   test('should validate input date as todays date', () => {
-    expect(calendar.isToday(today)).toBeTruthy();
-    expect(calendar.isToday(new Date(2022, 10))).toBeFalsy();
+    expect(Calendar.isToday(today)).toBeTruthy();
+    expect(Calendar.isToday(new Date(2022, 10))).toBeFalsy();
+  });
+  test('should validate input date with comparison date', () => {
+    expect(
+      Calendar.compare(new Date(2022, 10), new Date(2022, 10))
+    ).toBeTruthy();
+    expect(
+      Calendar.compare(new Date(2022, 10), new Date(2022, 11))
+    ).toBeFalsy();
   });
 });

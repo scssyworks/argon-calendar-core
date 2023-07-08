@@ -3,8 +3,8 @@ import type { CalendarConfig, RenderedMonths } from './types';
 import { generateMonth } from './utils';
 
 export class Calendar {
+  static #currentDate: Date = new Date();
   #weekStartIndex: number;
-  #currentDate: Date = new Date();
   #calendarConfig: CalendarConfig;
   #renderedMonths: RenderedMonths = [];
 
@@ -20,7 +20,7 @@ export class Calendar {
     );
   }
 
-  getDate(offset = 0): Date {
+  static getDate(offset = 0): Date {
     const currentDay = new Date(
       this.#currentDate.getFullYear(),
       this.#currentDate.getMonth(),
@@ -34,16 +34,20 @@ export class Calendar {
     return currentDay;
   }
 
-  today() {
+  static today() {
     return this.getDate();
   }
 
-  isToday(compareDate: Date) {
+  static isToday(compareDate: Date) {
     const dt = this.today();
+    return this.compare(dt, compareDate);
+  }
+
+  static compare(inputDate: Date, compareDate: Date) {
     return (
-      dt.getFullYear() === compareDate.getFullYear() &&
-      dt.getMonth() === compareDate.getMonth() &&
-      dt.getDate() === compareDate.getDate()
+      inputDate.getFullYear() === compareDate.getFullYear() &&
+      inputDate.getMonth() === compareDate.getMonth() &&
+      inputDate.getDate() === compareDate.getDate()
     );
   }
 
@@ -53,7 +57,7 @@ export class Calendar {
 
   create(offset = 0) {
     const { visibleMonthCount, visibleWeekCount } = this.#calendarConfig;
-    const currentDate = this.today();
+    const currentDate = Calendar.today();
     const monthToRender = currentDate.getMonth() + offset;
     this.reset();
     for (let i = 0; i < visibleMonthCount; i += 1) {
