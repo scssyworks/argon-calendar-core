@@ -2,7 +2,12 @@
 
 # Argon Calendar Core
 
-"Argon Calendar Core" is a core API for calendar
+"Argon Calendar Core" is a JavaScript library that provides a robust set of core
+APIs specifically designed for building customizable calendars. As a developer,
+you have the freedom to choose any view engine that suits your needs, allowing
+you to dive right into the development process. Moreover, this library provides
+a set of handy functions that greatly simplify the calendar building process,
+enabling you to create dynamic and interactive calendars effortlessly.
 
 # Install
 
@@ -12,10 +17,9 @@ npm i argon-calendar-core
 
 # Usage
 
-Create a calendar using default `calendar` object or customize using `Calendar`
-class.
+### Calendar object:
 
-### Default:
+Generate a calendar using `calendar` object.
 
 ```ts
 import { calendar } from "argon-calendar-core";
@@ -28,20 +32,23 @@ console.log(
  * [{
  *   year: '2023',
  *   month: 'june',
+ *   monthIndex: 5,
  *   weekLabels: ['sunday', 'monday', 'tuesday', ...],
  *   dates: [2023-05-27T18:30:00.000Z, 2023-05-28T18:30:00.000Z, 2023-05-29T18:30:00.000Z, ...]
  * }]
  */
 ```
 
-### Customize:
+### Calendar class:
+
+Customize a calendar using `Calendar` class.
 
 ```ts
 import { Calendar, Week } from "argon-calendar-core";
 const calendar = new Calendar({
-  visibleMonthCount: 1, // Show one month at a time
-  visibleWeekCount: 6, // Show 6 weeks in a month
-  weekStartsOn: Week.SUN, // Start the week on "sunday"
+  visibleMonthCount: 1, // Show one month at a time. The default value is 1.
+  visibleWeekCount: 6, // Show 6 weeks in a month. The default value is 6.
+  weekStartsOn: Week.SUN, // Start the week on "sunday". The default value is "sunday".
 });
 console.log(
   calendar.create().output(),
@@ -52,16 +59,18 @@ console.log(
  * [{
  *   year: '2023',
  *   month: 'june',
+ *   monthIndex: 5,
  *   weekLabels: ['sunday', 'monday', 'tuesday', ...],
  *   dates: [2023-05-27T18:30:00.000Z, 2023-05-28T18:30:00.000Z, 2023-05-29T18:30:00.000Z, ...]
  * }]
  */
 ```
 
-### Format:
+### Formatting:
 
-The default output contains list of dates in a raw `Date` format. You can format
-it to a human readable form using `map` method.
+The API allows to format output as per your preference. The default output
+contains list of dates in a raw `Date` format. The following example converts
+date to string format.
 
 ```ts
 import { Calendar, Week } from "argon-calendar-core";
@@ -79,6 +88,7 @@ console.log(
  * [{
  *   year: '2023',
  *   month: 'june',
+ *   monthIndex: 5,
  *   weekLabels: ['sunday', 'monday', 'tuesday', ...],
  *   dates: [
  *     'Sun May 28 2023 00:00:00 GMT+0530 (India Standard Time)',
@@ -90,7 +100,9 @@ console.log(
  */
 ```
 
-### Render previous or next month(s) by passing an offset
+### Generate previous or next month(s)
+
+Use an `offset` parameter to generate previous or next month's data.
 
 ```ts
 // Assuming current month is June 2023
@@ -112,10 +124,20 @@ console.log(
 ); // Outputs month of April
 ```
 
+### Helper methods
+
+| Method                                                           | Description                                             |
+| ---------------------------------------------------------------- | ------------------------------------------------------- |
+| `static getDate(offset: number): Date`                           | Returns current or offset date                          |
+| `static today(): Date`                                           | Returns current date                                    |
+| `static isToday(inputDate: Date): boolean`                       | Returns `true` if provided date is same as today's date |
+| `static compare(inputDate: Date, comparisonDate: Date): boolean` | Returns `true` if input dates are the same              |
+
 # Support
 
-Calendar core API is supported in `nodejs` and can also be used with bundlers
-like `webpack`, `parcel` and `rollup`.
+Calendar core API is supported for both `nodejs` as well as `browser`
+environments. You can also use it with bundlers such as `webpack`, `parcel` and
+`rollup`.
 
 # Contributing
 
