@@ -9,12 +9,12 @@ export type CalendarConfig = {
   weekStartsOn: Week;
 };
 
-export type RenderedMonth = {
+export type RenderedMonth<T = Date> = {
   year: string;
   month: Month;
   monthIndex: number;
   weekLabels: Week[];
-  dates: Date[];
+  dates: T[];
 };
 
-export type RenderedMonths = RenderedMonth[];
+export type RenderedMonths<T = Date> = RenderedMonth<T>[];

@@ -47,3 +47,6 @@ export const WEEKS = [
   Week.FRI,
   Week.SAT
 ];
+
+export const ERR_MAP =
+  'Function map() requires a callback! Use output() instead.';

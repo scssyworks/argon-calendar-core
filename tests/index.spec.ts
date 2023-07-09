@@ -1,4 +1,4 @@
-import { Calendar, MONTHS, WEEKS, Week, calendar } from '../src';
+import { Calendar, ERR_MAP, MONTHS, WEEKS, Week, calendar } from '../src';
 import { version } from '../package.json';
 
 describe('calendar instance', () => {
@@ -42,8 +42,9 @@ describe('calendar instance', () => {
     expect(calendarOutput[0].weekLabels.length).toBe(7);
     expect(calendarOutput[0].dates[0]).toBe(calendarStart.toString());
   });
-  test('should leave dates unformatted if formatter function is not passed', () => {
-    expect(calendar.create().output()).toEqual(calendar.create().map());
+  test('should throw an error if map function is called with invalid value', () => {
+    // rome-ignore lint/suspicious/noExplicitAny: Suppressing rule for testing
+    expect(() => calendar.create().map('test' as any)).toThrowError(ERR_MAP);
   });
   test('should render next month', () => {
     const calendarOutput = calendar.create(+1).output();
