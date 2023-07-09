@@ -1,5 +1,9 @@
 import { ERR_MAP, WEEKS, Week } from './constants';
-import type { CalendarConfig, RenderedMonths } from './types';
+import type {
+  CalendarConfig,
+  RenderedMonthMeta,
+  RenderedMonths
+} from './types';
 import { generateMonth } from './utils';
 import { version as ver } from '../package.json';
 
@@ -77,13 +81,16 @@ export class Calendar {
     return this;
   }
 
-  map<T>(transformCallback: (input: Date) => T): RenderedMonths<T> {
+  map<T>(
+    transformCallback: (input: Date, meta: RenderedMonthMeta) => T
+  ): RenderedMonths<T> {
     const transformedMonths = [];
     if (typeof transformCallback === 'function') {
       return this.#renderedMonths.map((renderedMonth) => {
+        const { dates, ...meta } = renderedMonth;
         return {
-          ...renderedMonth,
-          dates: renderedMonth.dates.map(transformCallback)
+          ...meta,
+          dates: dates.map((dt) => transformCallback(dt, meta))
         };
       });
     }
