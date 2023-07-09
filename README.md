@@ -135,7 +135,7 @@ console.log(
 
 # Support
 
-Calendar core API is supported for both `nodejs` as well as `browser`
+Calendar core API has support for both `nodejs` as well as `browser`
 environments. You can also use it with bundlers such as `webpack`, `parcel` and
 `rollup`.
 
