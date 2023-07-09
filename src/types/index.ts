@@ -12,6 +12,7 @@ export type CalendarConfig = {
 export type RenderedMonth = {
   year: string;
   month: Month;
+  monthIndex: number;
   weekLabels: Week[];
   dates: Date[];
 };

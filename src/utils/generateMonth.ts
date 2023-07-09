@@ -26,9 +26,11 @@ export function generateMonth(
     renderDate += 1;
     totalDays -= 1;
   }
+  const monthIndex = cal.getMonth();
   return {
-    year: cal.getFullYear().toString(),
-    month: MONTHS[cal.getMonth()],
+    year: `${cal.getFullYear()}`,
+    month: MONTHS[monthIndex],
+    monthIndex,
     weekLabels,
     dates
   };

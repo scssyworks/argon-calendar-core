@@ -1,4 +1,5 @@
 import { Calendar, MONTHS, WEEKS, Week, calendar } from '../src';
+import { version } from '../package.json';
 
 describe('calendar instance', () => {
   let today: Date;
@@ -17,6 +18,9 @@ describe('calendar instance', () => {
       dt.getMonth(),
       dt.getDate() - dayOffset
     );
+  });
+  test('should get version', () => {
+    expect(calendar.version).toBe(version);
   });
   test('should render current month', () => {
     const calendarOutput = calendar.create().output();

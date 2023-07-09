@@ -1,6 +1,7 @@
 import { WEEKS, Week } from './constants';
 import type { CalendarConfig, RenderedMonths } from './types';
 import { generateMonth } from './utils';
+import { version as ver } from '../package.json';
 
 export class Calendar {
   static #currentDate: Date = new Date();
@@ -8,8 +9,11 @@ export class Calendar {
   #calendarConfig: CalendarConfig;
   #renderedMonths: RenderedMonths = [];
 
-  constructor(config: Partial<CalendarConfig> = {}) {
-    const { visibleMonthCount, visibleWeekCount, weekStartsOn } = config;
+  constructor({
+    visibleMonthCount,
+    visibleWeekCount,
+    weekStartsOn
+  }: Partial<CalendarConfig> = {}) {
     this.#calendarConfig = Object.freeze({
       visibleMonthCount: visibleMonthCount ?? 1,
       visibleWeekCount: visibleWeekCount ?? 6,
@@ -76,23 +80,22 @@ export class Calendar {
   map<T>(transformCallback?: (input: Date) => T) {
     const transformedMonths = [];
     if (typeof transformCallback === 'function') {
-      for (const month of this.#renderedMonths) {
-        const transformedMonth = {
-          ...month,
-          dates: [] as T[]
+      return this.#renderedMonths.map((renderedMonth) => {
+        return {
+          ...renderedMonth,
+          dates: renderedMonth.dates.map(transformCallback)
         };
-        for (const date of month.dates) {
-          transformedMonth.dates.push(transformCallback(date));
-        }
-        transformedMonths.push(transformedMonth);
-      }
-      return transformedMonths;
+      });
     }
     return this.#renderedMonths;
   }
 
   reset() {
     this.#renderedMonths.length = 0;
+  }
+
+  get version() {
+    return ver;
   }
 }
 
