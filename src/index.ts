@@ -84,7 +84,6 @@ export class Calendar {
   map<T>(
     transformCallback: (input: Date, meta: RenderedMonthMeta) => T
   ): RenderedMonths<T> {
-    const transformedMonths = [];
     if (typeof transformCallback === 'function') {
       return this.#renderedMonths.map((renderedMonth) => {
         const { dates, ...meta } = renderedMonth;
