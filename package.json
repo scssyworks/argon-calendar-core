@@ -7,6 +7,7 @@
   "typings": "dist/typings/src/index.d.ts",
   "scripts": {
     "typings": "tsc",
+    "dev": "rollup-scripts dev",
     "build": "npm run typings && rollup-scripts build",
     "lint": "rollup-scripts lint",
     "test": "jest --collect-coverage --detect-open-handles",
@@ -17,7 +18,11 @@
     "type": "git",
     "url": "git+https://github.com/scssyworks/argon-calendar-core.git"
   },
-  "keywords": ["calendar", "core", "api"],
+  "keywords": [
+    "calendar",
+    "core",
+    "api"
+  ],
   "author": "scssyworks",
   "license": "MIT",
   "bugs": {
@@ -28,7 +33,12 @@
     "@biomejs/biome": "^1.6.3",
     "@types/jest": "^29.5.12",
     "jest": "^29.7.0",
-    "rollup-scripts": "^0.0.124"
+    "rollup-scripts": "^0.0.125"
   },
-  "files": ["dist/cjs", "dist/esm", "dist/typings", "LICENSE"]
+  "files": [
+    "dist/cjs",
+    "dist/esm",
+    "dist/typings",
+    "LICENSE"
+  ]
 }
