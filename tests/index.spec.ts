@@ -43,7 +43,7 @@ describe('calendar instance', () => {
     expect(calendarOutput[0].dates[0]).toBe(calendarStart.toString());
   });
   test('should throw an error if map function is called with invalid value', () => {
-    // rome-ignore lint/suspicious/noExplicitAny: Suppressing rule for testing
+    // biome-ignore lint/suspicious/noExplicitAny: Suppressing rule for testing
     expect(() => calendar.create().map('test' as any)).toThrowError(ERR_MAP);
   });
   test('should render next month', () => {
